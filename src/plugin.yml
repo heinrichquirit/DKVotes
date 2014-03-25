@@ -1,0 +1,13 @@
+name: DKVotes
+main: main.java.net.dkcraft.dkvotes.DKVotes
+version: 1.0.0
+author: BigBadHenz
+commands:
+  votepoints:
+    description: View your vote points.
+  votestore:
+    description: Access a chat-based store.
+  addvotepoint:
+    description: Add vote points to player.
+  removevotepoint:
+    description: Removes vote points from player.

@@ -1,0 +1,6 @@
+# How much vote points to receive per vote
+vote-point-reward: 1
+# Format: <quantity>:<itemname>:<price>
+store:
+- 1:sponge:1
+- 2:stone:5
