@@ -69,6 +69,10 @@ public class VoteStore extends BaseCommand {
 							player.sendMessage(YELLOW + "You need " + GREEN + difference + YELLOW + " vote points to purchase this reward.");
 							return;
 						}
+						if (player.getInventory().firstEmpty() == -1) {
+							player.sendMessage(YELLOW + "Please make space in your inventory before purchasing.");
+							return;
+						}
 						p.vote_handler.reload();
 						player.getInventory().addItem(item);
 						player.updateInventory();
