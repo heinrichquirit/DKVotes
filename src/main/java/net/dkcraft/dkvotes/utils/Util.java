@@ -33,4 +33,8 @@ public class Util {
 		Bukkit.getLogger().log(level, "[DKVotes] " + message);
 	}
 	
+	public static void info(String message) {
+		log(Level.INFO, message);
+	}
+	
 }

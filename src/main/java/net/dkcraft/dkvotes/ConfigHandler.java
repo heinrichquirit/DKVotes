@@ -25,6 +25,10 @@ public class ConfigHandler {
 		configuration = YamlConfiguration.loadConfiguration(file);
 	}
 	
+	public File getFile() {
+		return file;
+	}
+	
 	public FileConfiguration getConfig() {
 		return configuration;
 	}
@@ -43,6 +47,7 @@ public class ConfigHandler {
 		configuration = YamlConfiguration.loadConfiguration(file);
 		InputStream stream = plugin.getResource(file_name);
 		if (stream == null) return;
+		@SuppressWarnings("deprecation")
 		YamlConfiguration defConfig = YamlConfiguration.loadConfiguration(stream);
 		configuration.setDefaults(defConfig);
 	}

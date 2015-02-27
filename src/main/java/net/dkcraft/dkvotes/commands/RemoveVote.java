@@ -25,6 +25,7 @@ public class RemoveVote extends BaseCommand {
 			 player.sendMessage(RED + "Incorrect syntax, usage: /removevotepoint <player> <amount>");
 		}
 		else if (args.length == 2) {
+			@SuppressWarnings("deprecation")
 			Player target = Bukkit.getPlayer(args[0]);
 			int amount = 0;
 			try {
@@ -38,15 +39,15 @@ public class RemoveVote extends BaseCommand {
 				player.sendMessage(RED + args[0] + " is offline.");
 				return;
 			}
-			String name = target.getName();
-			if (amount > p.vote_handler.getConfig().getInt(name)) {
-				player.sendMessage(RED + name + " vote points is less than " + amount + ".");
+			String targetId = target.getUniqueId().toString();
+			if (amount > p.vote_handler.getConfig().getInt(targetId)) {
+				player.sendMessage(RED + target.getName() + " vote points is less than " + amount + ".");
 				return;
 			}
 			p.vote_handler.reload();
-			p.vote_handler.getConfig().set(name, p.vote_handler.getConfig().getInt(name) - amount);
+			p.vote_handler.getConfig().set(targetId, p.vote_handler.getConfig().getInt(targetId) - amount);
 			p.vote_handler.save();
-			player.sendMessage(YELLOW + "Removed " + GREEN + amount + YELLOW + " points from " + GREEN + name + YELLOW + ".");
+			player.sendMessage(YELLOW + "Removed " + GREEN + amount + YELLOW + " points from " + GREEN + target.getName() + YELLOW + ".");
 			target.sendMessage(GREEN + player.getName() + YELLOW + " removed " + GREEN + amount + YELLOW + " vote points from your balance.");
 		}
 	}

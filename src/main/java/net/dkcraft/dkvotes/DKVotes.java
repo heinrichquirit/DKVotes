@@ -2,7 +2,6 @@ package main.java.net.dkcraft.dkvotes;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import main.java.net.dkcraft.dkvotes.commands.CommandManager;
 import main.java.net.dkcraft.dkvotes.listeners.VoteListener;
@@ -17,8 +16,6 @@ public class DKVotes extends JavaPlugin {
 	/* Configuration settings */
 	public int vote_point_reward;
 	public List<String> store;
-	public Set<String> enchanted_items;
-	
 	public ConfigHandler vote_handler;
 	
 	public void onEnable() {
@@ -43,7 +40,5 @@ public class DKVotes extends JavaPlugin {
 	private void loadValues() {
 		vote_point_reward = getConfig().getInt(ConfigPath.VOTE_POINT_REWARD);
 		store = getConfig().getStringList(ConfigPath.STORE);
-		enchanted_items = getConfig().getKeys(true);
 	}
-	
 }

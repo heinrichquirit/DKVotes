@@ -23,16 +23,17 @@ public class VoteListener implements Listener {
 	
 	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
 	public void onVote(VotifierEvent event) {
-		String name = event.getVote().getUsername();
-		Player player = Bukkit.getPlayer(name);
-		if (!p.vote_handler.getConfig().contains(name)) {
+		@SuppressWarnings("deprecation")
+		Player player = Bukkit.getPlayer(event.getVote().getUsername());
+		String pId = player.getUniqueId().toString();
+		if (!p.vote_handler.getConfig().contains(pId)) {
 			p.vote_handler.reload();
-			p.vote_handler.getConfig().set(name, 1);
+			p.vote_handler.getConfig().set(pId, 1);
 			p.vote_handler.save();
 			return;
 		}
 		p.vote_handler.reload();
-		p.vote_handler.getConfig().set(name, p.vote_handler.getConfig().getInt(name) + 1);
+		p.vote_handler.getConfig().set(pId, p.vote_handler.getConfig().getInt(pId) + 1);
 		if (player != null) {
 			player.sendMessage(YELLOW + "You received " + GREEN + "1" + YELLOW + " vote point for voting.");
 		}

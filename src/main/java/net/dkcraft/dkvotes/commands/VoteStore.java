@@ -23,6 +23,7 @@ public class VoteStore extends BaseCommand {
 	
 	@SuppressWarnings("deprecation")
 	public void execute(Player player, String[] args) {
+		String pId = player.getUniqueId().toString();
 		if (args.length == 0) {
 			if (p.store.size() == 0) {
 				player.sendMessage(ChatColor.RED + "There are no packages to display, check your configuration settings.");
@@ -51,7 +52,7 @@ public class VoteStore extends BaseCommand {
 		}
 		else if (args.length == 2) {
 			if (args[0].equalsIgnoreCase("buy")) {
-				int vote_balance = p.vote_handler.getConfig().getInt(player.getName());
+				int vote_balance = p.vote_handler.getConfig().getInt(pId);
 				int reward_id = 1;
 				try {
 					reward_id = Integer.parseInt(args[1]);
@@ -77,7 +78,7 @@ public class VoteStore extends BaseCommand {
 						player.getInventory().addItem(item);
 						player.updateInventory();
 						player.sendMessage(YELLOW + "You received " + GREEN + item.getAmount() + " " + item.getType().name().toLowerCase() + "(s)" + YELLOW + ".");
-						p.vote_handler.getConfig().set(player.getName(), vote_balance - point_cost);
+						p.vote_handler.getConfig().set(pId, vote_balance - point_cost);
 						p.vote_handler.save();
 					} catch (NumberFormatException e) {
 						Util.log(Level.SEVERE, "Format your store list correctly in your configuration settings.");

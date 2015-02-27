@@ -17,7 +17,7 @@ public class VotePoints extends BaseCommand {
 	
 	public void execute(Player player, String[] args) {
 		if (args.length == 0) {
-			player.sendMessage(YELLOW + "You have " + GREEN + p.vote_handler.getConfig().getInt(player.getName()) + YELLOW + " vote points.");
+			player.sendMessage(YELLOW + "You have " + GREEN + p.vote_handler.getConfig().getInt(player.getUniqueId().toString()) + YELLOW + " vote points.");
 		}
 	}
 
